@@ -3,10 +3,12 @@
    <title><?php echo $title; ?></title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
       <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
    <style>
            body
            {
@@ -16,19 +18,19 @@
            }
            .box
            {
-                width:900px;
+                /* width:900px; */
                 padding:20px;
                 background-color:#fff;
-                border:1px solid #ccc;
+                /* border:1px solid #ccc;
                 border-radius:5px;
-                margin-top:10px;
+                margin-top:10px; */
            }
       </style>
  </head>
  <body>
       <div class="container box">
            <h3 align="center"><?php echo $title; ?></h3><br />
-           <div class="table-responsive">
+           <!-- <div class="table-responsive"> -->
                 <br />
                 <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
                 <br /><br />
@@ -43,7 +45,7 @@
                           </tr>
                      </thead>
                 </table>
-           </div>
+           <!-- </div> -->
       </div>
  </body>
  </html>
@@ -86,6 +88,7 @@
       var dataTable = $('#user_data').DataTable({
            "processing":true,
            "serverSide":true,
+           "responsive":true,
            "order":[],
            "ajax":{
                 url:"<?php echo base_url() . 'crud/fetch_user'; ?>",
