@@ -103,6 +103,7 @@
            var firstName = $('#first_name').val();
            var lastName = $('#last_name').val();
            var extension = $('#user_image').val().split('.').pop().toLowerCase();
+           var action = $('#action').val();
            if(extension != '')
            {
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
@@ -115,14 +116,14 @@
            if(firstName != '' && lastName != '')
            {
                 $.ajax({
-                     url:"<?php echo base_url() . 'crud/user_action'?>",
+                     url:"<?php echo base_url() . 'crud/user_action/'?>" + action,
                      method:'POST',
                      data:new FormData(this),
                      contentType:false,
                      processData:false,
                      success:function(data)
                      {
-                          alert(data);
+                          alert('Success');
                           $('#user_form')[0].reset();
                           $('#userModal').modal('hide');
                           dataTable.ajax.reload();
@@ -174,4 +175,4 @@
            }
       });
  });
- </script> 
+ </script>

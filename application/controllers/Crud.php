@@ -28,38 +28,39 @@
            );
            echo json_encode($output);
       }
-      function user_action(){
-           if($_POST["action"] == "Add")
-           {
-                $insert_data = array(
-                     'first_name'          =>     $this->input->post('first_name'),
-                     'last_name'               =>     $this->input->post("last_name"),
-                     'image'                    =>     $this->upload_image()
-                );
-                $this->load->model('crud_model');
-                $this->crud_model->insert_crud($insert_data);
-                echo 'Data Inserted';
-           }
-           if($_POST["action"] == "Edit")
-           {
-                $user_image = '';
-                if($_FILES["user_image"]["name"] != '')
-                {
-                     $user_image = $this->upload_image();
-                }
-                else
-                {
-                     $user_image = $this->input->post("hidden_user_image");
-                }
-                $updated_data = array(
-                     'first_name'          =>     $this->input->post('first_name'),
-                     'last_name'               =>     $this->input->post('last_name'),
-                     'image'                    =>     $user_image
-                );
-                $this->load->model('crud_model');
-                $this->crud_model->update_crud($this->input->post("user_id"), $updated_data);
-                echo 'Data Updated';
-           }
+      function user_action($action){
+          if($action == "Add")
+          {
+               $insert_data = array(
+                    'first_name'          =>     $this->input->post('first_name'),
+                    'last_name'               =>     $this->input->post("last_name"),
+                    'image'                    =>     $this->upload_image()
+               );
+               $this->load->model('crud_model');
+               $this->crud_model->insert_crud($insert_data);
+               echo 'Data Inserted';
+          }
+
+          if($action == "Edit")
+          {
+               $user_image = '';
+               if($_FILES["user_image"]["name"] != '')
+               {
+                    $user_image = $this->upload_image();
+               }
+               else
+               {
+                    $user_image = $this->input->post("hidden_user_image");
+               }
+               $updated_data = array(
+                    'first_name'          =>     $this->input->post('first_name'),
+                    'last_name'               =>     $this->input->post('last_name'),
+                    'image'                    =>     $user_image
+               );
+               $this->load->model('crud_model');
+               $this->crud_model->update_crud($this->input->post("user_id"), $updated_data);
+               echo 'Data Updated';
+          }
       }
       function upload_image()
       {
