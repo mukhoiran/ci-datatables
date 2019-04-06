@@ -42,6 +42,12 @@
            $this->db->from($this->table);
            return $this->db->count_all_results();
       }
+      function get_all()
+      {
+           $this->db->select("*");
+           $query = $this->db->get($this->table);
+           return $query->result();
+      }
       function insert_crud($data)
       {
            $this->db->insert('users', $data);
