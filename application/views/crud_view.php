@@ -35,6 +35,7 @@
                 <div class="text-right">
                   <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-md">Add Data</button>
                   <a target="_blank" href="<?=base_url('print_data/pdf')?>" class="btn btn-success btn-md">Print to PDF</a>
+                  <a href="<?=base_url('print_data/excel')?>" class="btn btn-success btn-md">Print to Excel</a>
                 </div>
                 <br /><br />
                 <table id="user_data" class="table table-bordered table-striped">

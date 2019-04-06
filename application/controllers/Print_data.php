@@ -12,4 +12,12 @@
      $this->pdf->filename = "laporan-users.pdf";
      $this->pdf->load_view('users_pdf', $data);
   }
+
+  public function excel(){
+    $this->load->model("crud_model");
+    $data['users_data'] = $this->crud_model->get_all();
+    $this->load->view('users_excel', $data);
+  }
+
+
 }
